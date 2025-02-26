@@ -1,0 +1,29 @@
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <h1 class="header">Todos</h1>
+      <div>
+        <input type="text" [(ngModel)]="newTodo" placeholder="Add a new todo" />
+        <button (click)="addTodo()">Add Todo</button>
+      </div>
+      <ul>
+        <div *ngFor="let todo of todos">
+          <span [ngClass]="{ 'completed': todo.completed }">{{ todo.title }}</span>
+          <input type="checkbox" [checked]="todo.completed" (change)="toggleTodoCompletion(todo.id)" />
+          <span *ngIf="todo.completed">✔️</span>
+          <span *ngIf="!todo.completed">❌</span>
+      
+          <!-- <span *ngIf="todo.completed">
+                                          <img src="path/to/your/image.jpg" alt="Your Image">
+                                        </span> -->
+          <button (click)="deleteTodo(todo.id)">Delete</button>
+      
+        </div>
+      </ul>
+
+    </div>
+    
+  </div>
+</main>
+
+<router-outlet />
